@@ -1,5 +1,6 @@
 from __future__ import print_function
 from __future__ import division
+import readline
 from time import sleep
 try: input=raw_input
 except NameError: pass
@@ -94,6 +95,8 @@ class CoreMachine(object):
             except KeyboardInterrupt:
                 print("Log out to quit the game.")
         print(self.bye)
+    def sys(self,call):
+        return self.calls[call]()
     def save_file(self,abs_name,content="",permissions=(True,True,False)):
         self.root.memory[abs_name] = File(content,permissions)
     def save_folder(self,abs_name,permissions=(True,True,True)):

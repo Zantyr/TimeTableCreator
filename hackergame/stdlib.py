@@ -9,7 +9,25 @@ from core import CoreMachine
 from pyta import pyta
 
 #manual
-MAN={'pyta':"""\nPyta programming language\nUnstable and experimental\nFeatures may not work correctly\n\nOverall syntax:\n(a b c ...) => a(b,c,...)\n\nSyntax tips:\n(' x)     - return x unevaluated\n(# x y)   - set uneval x to y\n(#! x y)  - set evalled x to y\n(! x)     - execute list x, ret last\n(!: ...)  - execute unpacked list\n(? x y)   - if x execute y\n(? x y z) - if x then y else z\n\nCommands:\n'&': sum the arguments\n'*': multiply the arguments\n'-': subtract\n'/': division\n'/-': modulo\n':': print (accepts :' as a parameter to print strings)\n'@': access the nth element of a list\n'@#': append argument to list\n'#@': x[y]=z\n'--': negate\n'**': power\n'!**': logarithm\n'#-#': range(may not work)\n'@..': list from args\n'$$$': load file\n'!?': get input :' for strings\n'###': save file\n""",'man':"""This is GNU manual page\n\nYou may want to find some help there.\njust type 'man <topic>'\nGood luck\n\nUseful commands: ls, cd, dog, pyta, ssh, lgbt, chmod, mkdir, rm""",'ls':"Log out. Seriously.\nThis actually shows only the current folder.",'cd':"This varies from normal cd: there's no ..","lgbt":'Low Grade Budget Text-editor\nUnlike vim has only command mode\n+:text appends text\n+:number inserts a line\n-:number removes a line\n?:number shows a scope\n? shows whole document\nnumber:text replaces the given line with the text\nquit - quits ofc','dog':'This is the plain old cat. Copyleft, all rights reversed.','nmap':'This actually requires no parameters. Instead, it needs root access.','scp':'One-way copy through ssh\nusage:scp host localsource remotetarget\nlocally uses $PWD','chmod':'This chmod has cow super-powers','bdsm':'BADLY DESIGNED SCRIPTING MACHINE\n\nBudget version of apt-get\nbdsm <name> either runs a script or installs it if key is available','mkdir':'www.google.com','rm':'Removes an element, either file or folder. Doesn\'t do it recursively.'}
+MAN={'pyta':"""\nPyta programming language\nUnstable and experimental\nFeatures may not work correctly\n\nOverall syntax:\n(a b c ...) => a(b,c,...)\n\nSyntax tips:\n(' x)     - return x unevaluated\n(# x y)   - set uneval x to y\n(#! x y)  - set evalled x to y\n(! x)     - execute list x, ret last\n(!: ...)  - execute unpacked list\n(? x y)   - if x execute y\n(? x y z) - if x then y else z\n\nCommands:\n'&': sum the arguments\n'*': multiply the arguments\n'-': subtract\n'/': division\n'/-': modulo\n':': print (accepts :' as a parameter to print strings)\n'@': access the nth element of a list\n'@#': append argument to list\n'#@': x[y]=z\n'--': negate\n'**': power\n'!**': logarithm\n'#-#': range(may not work)\n'@..': list from args\n'$$$': load file\n'!?': get input :' for strings\n'###': save file\n""",
+
+     'man':"""This is GNU manual page\n\nYou may want to find some help there.\njust type 'man <topic>'\nGood luck\n\nUseful commands: ls, cd, dog, pyta, ssh, lgbt, chmod, mkdir, rm""",
+
+     'ls':"Log out. Seriously.\nThis actually shows only the current folder.",
+
+     'cd':"This varies from normal cd: there's no ..",
+
+     "lgbt":'Low Grade Budget Text-editor\nUnlike vim has only command mode\n+:text appends text\n+:number inserts a line\n-:number removes a line\n?:number shows a scope\n? shows whole document\nnumber:text replaces the given line with the text\nquit - quits ofc',
+
+     'dog':'This is the plain old cat. Copyleft, all rights reversed.','nmap':'This actually requires no parameters. Instead, it needs root access.',
+
+     'scp':'One-way copy through ssh\nusage:scp host localsource remotetarget\nlocally uses $PWD','chmod':'This chmod has cow super-powers',
+
+     'bdsm':'BADLY DESIGNED SCRIPTING MACHINE\n\nBudget version of apt-get\nbdsm <name> either runs a script or installs it if key is available',
+
+     'mkdir':'www.google.com',
+
+     'rm':'Removes an element, either file or folder. Doesn\'t do it recursively.'}
 
 def archive_manager(machine):
     print("This is the Heavily Wicked Disposer of Packages")
@@ -56,14 +74,28 @@ class Machine(CoreMachine):
     """
     def __init__(self,ip_address,password,iso=None):
         super(Machine,self).__init__(ip_address,password,iso)
-        self.calls = {'ls':self.__ls,'man':self.__man,'help':lambda *x:print("No such command, man"),'cd':self.__cd,'pyta':self.__pyta,'ssh':self.__ssh,'scp':self.__scp,'dog':self.__dog,'lgbt':self.__lgbt,'bdsm':self.__bdsm,'nmap':self.__nmap,'chmod':self.__chmod,'mkdir':self.__mkdir,'rm':self.__rm}
+        
+        self.calls = {'ls':self.__ls,
+                      'man':self.__man,
+                      'help':self.__help,
+                      'cd':self.__cd,
+                      'pyta':self.__pyta,
+                      'ssh':self.__ssh,
+                      'scp':self.__scp,
+                      'dog':self.__dog,
+                      'lgbt':self.__lgbt,
+                      'bdsm':self.__bdsm,
+                      'nmap':self.__nmap,
+                      'chmod':self.__chmod,
+                      'mkdir':self.__mkdir,
+                      'rm':self.__rm}
         self.motd = "Hello in cra.sh OS\nversion 1.0.3 build nightly\nMachine: "+self.ip_address+"\n\n"
     def __cd(self,*args):
         if not args:
             self.env['$PWD']="\\"
         else:
             try:
-                assert(self.root.get_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0]).perms()[2] == 'd')
+                assert(self.get_file(self.__pwd(args[0])).perms()[2] == 'd')
             except KeyError:
                 print("No such folder")
                 return
@@ -71,8 +103,8 @@ class Machine(CoreMachine):
                 print("Is a file")
                 return
             try:
-                assert(self.root.get_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0]).perms()[0] == 'r')
-                self.env["$PWD"]=self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0]
+                assert(self.get_file(self.__pwd(args[0])).perms()[0] == 'r')
+                self.env["$PWD"]=self.__pwd(args[0])
             except AssertionError:
                 print("No read permissions to enter this folder")
     def __chmod(self,*args):
@@ -81,13 +113,13 @@ class Machine(CoreMachine):
             return
         pw = input("Root access is needed: ")
         if pw==self.sudo_password:
-            self.root.get_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0]).unlock()
+            self.get_file(self.__pwd(args[0])).unlock()
         else:
             sleep(2)
             print("Incorrect password")
     def __ls(self,*args):
         try:
-            file = self.root.get_file(self.env["$PWD"]+(("\\"+args[0]) if args else ""))
+            file = self.get_file(self.env["$PWD"]+(("\\"+args[0]) if args else ""))
             try:
                 files = file.get_files()
                 string = ""
@@ -109,7 +141,7 @@ class Machine(CoreMachine):
             print("Give an input file")
             return
         try:
-            file = self.root.get_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0])
+            file = self.get_file(self.__pwd(args[0]))
             if(file.perms()[0]=='r'):print(pyta(self,file.content))
             else:print("Cannot read this file")
         except KeyError:
@@ -134,7 +166,7 @@ class Machine(CoreMachine):
             pw=input("Password: ")
             if pw==host.sudo_password:
                 try:
-                    file = self.root.get_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[1])
+                    file = self.get_file(self.__pwd(args[1]))
                     if(file.perms()[0]=='r'):
                         host.save_file(args[2],file.content)
                     else:print("Cannot read this file")
@@ -149,7 +181,7 @@ class Machine(CoreMachine):
             print("Give an input file")
             return
         try:
-            file = self.root.get_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0])
+            file = self.get_file(self.__pwd(args[0]))
             if(file.perms()[0]=='r'):print(file.content)
             else:print("Cannot read this file")
         except KeyError:
@@ -159,7 +191,7 @@ class Machine(CoreMachine):
             buffer = ""
         else:
             try:
-                file = self.root.get_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0])
+                file = self.get_file(self.__pwd(args[0]))
                 try:
                     assert(file.perms()[:2]=="rw")
                     buffer = file.content
@@ -200,7 +232,7 @@ class Machine(CoreMachine):
         buffer = '\n'.join(buffer)
         if not args:
             args = [input("Give me the filename: ")]
-        self.save_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0],buffer)
+        self.save_file(self.__pwd(args[0]),buffer)
     def __bdsm(self,*args):
         if not args:
             print("BDSM Fataler Fehler: keine Skript gewahlt.")
@@ -209,7 +241,7 @@ class Machine(CoreMachine):
             func = self.env[args[0]]
         except KeyError:
             try:
-                key = self.root.get_file(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0]).content
+                key = self.get_file(self.__pwd(args[0])).content
                 print("Das Skript aus dem Rep erhalten")
                 sleep(3)
                 cmd,func = BDSM_REPOS[key]
@@ -240,9 +272,13 @@ class Machine(CoreMachine):
         if not args:
             print("Give an input file")
             return
-        self.save_folder(self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+args[0])
+        self.save_folder(self.__pwd(args[0]))
     def __rm(self,*args):
         if not args:
             print("Give an input file")
             return
-        self.root.memory.pop(args[0])
+        self.delete(self.__pwd(args[0]))
+    def __help(self,*args):
+        print("No such command, man")
+    def __pwd(self,name):
+        return self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+name
