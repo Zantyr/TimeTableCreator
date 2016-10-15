@@ -94,8 +94,6 @@ class CoreMachine(object):
             except KeyboardInterrupt:
                 print("Log out to quit the game.")
         print(self.bye)
-    def sys(self,call):
-        return self.calls[call]()
     def save_file(self,abs_name,content="",permissions=(True,True,False)):
         self.root.memory[abs_name] = File(content,permissions)
     def save_folder(self,abs_name,permissions=(True,True,True)):
@@ -103,3 +101,16 @@ class CoreMachine(object):
     def add_connection(self,machine):
         self.network[machine.ip_address] = machine
         machine.network[self.ip_address] = self
+    def remove_connection(self,name):
+        self.network[name].network.pop(self.ip_address)
+        self.network.pop(name)
+    def get_file(self,abs_name):
+        return self.root.get_file(abs_name)
+    def get_folder(self,abs_name):
+        return self.root.get_files(abs_name)
+    def delete(self,abs_name):
+        self.root.memory.pop(abs_name)
+    def get_env(self,name):
+        return self.env[name]
+    def set_env(self,name,value):
+        self.env[name]=value
