@@ -4,7 +4,8 @@ from time import sleep
 try: input=raw_input
 except NameError: pass
 from sys import argv
-import pickle
+import json
+import readline
 
 """
 This module implement basic
@@ -16,7 +17,8 @@ if __name__=="__main__":
     try:
         assert(len(argv)>1)
         with open(argv[1],"r") as f:
-            vector = pickle.load(f)
+            vector = json.loads(f.read())
+            vector = map(lambda x:Machine.from_dict(x),vector)
     except AssertionError,IOError:
         try:
             from line import main
@@ -25,9 +27,8 @@ if __name__=="__main__":
             print("There is no default scenario - plain mode")
             vector=[Machine('192.168.0.0','speerrceok')]
     vector[0].sh(True)
-    quit()
     path = input("Savefile: ")
     if path!='':
         with open(path,"w") as f:
-            pickle.dump(vector,f,protocol=0) #get_iso_method
+            f.write(json.dumps(map(lambda x:x.to_dict(),vector))) #get_iso_method
             print("Game saved succesfully")

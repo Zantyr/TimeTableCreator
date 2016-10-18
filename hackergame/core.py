@@ -12,28 +12,33 @@ This module implement basic
 class File(object):
     def __init__(self,content="",perms=(True,True,False)):
         self.content=content
-        self.__perms = list(perms)
+        self._perms = list(perms)
     def perms(self):
-        return ("r" if self.__perms[0] else "-")+("w" if self.__perms[1] else "-")+("d" if self.__perms[2] else "-")
+        return ("r" if self._perms[0] else "-")+("w" if self._perms[1] else "-")+("d" if self._perms[2] else "-")
     def unlock(self):
-        self.__perms[0] = True
-        self.__perms[1] = True
+        self._perms[0] = True
+        self._perms[1] = True
+    def to_dict(self):
+        return {'content':self.content,'perms':self._perms}
+    @classmethod
+    def from_dict(cls,node):
+        obj = File(node['content'],node['perms'])
+        return obj
 
 class Folder(File):
     def __init__(self,name,root,perms=(True,True,True)):
         self.name = name
         self.root = root
-        self.__perms = list(perms)
+        self._perms = list(perms)
     def get_files(self):
         return self.root.get_files(self.name)
-    def perms(self):
-        return ("r" if self.__perms[0] else "-")+("w" if self.__perms[1] else "-")+("d" if self.__perms[2] else "-")
-    def unlock(self):
-        self.__perms[0] = True
-        self.__perms[1] = True
-
-class App(File):
-    pass
+    def to_dict(self):
+        return super(Folder,self).to_dict()
+    @classmethod
+    def from_dict(cls,node,root):
+        obj = super(Folder,self).from_json(node)
+        obj.root = root
+        return obj
 
 class Root(Folder):
     def __init__(self,memory=None):
@@ -117,3 +122,10 @@ class CoreMachine(object):
         return self.env[name]
     def set_env(self,name,value):
         self.env[name]=value
+    def to_dict(self):
+        node = {'machine_type': self.__class__.__name__,'sudo_password':self.sudo_password,'ip_address':self.ip_address,
+                'network':[x for x in self.network],'motd':self.motd,'bye':self.bye,'root':{key:self.root.memory[key].to_dict() for key in self.root.memory},'env':self.env}
+        return node
+    @classmethod
+    def from_dict(cls,node):
+        raise NotImplementedError

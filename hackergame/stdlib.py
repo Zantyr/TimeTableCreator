@@ -9,7 +9,9 @@ from core import CoreMachine
 from pyta import pyta
 
 #manual
-MAN={'pyta':"""\nPyta programming language\nUnstable and experimental\nFeatures may not work correctly\n\nOverall syntax:\n(a b c ...) => a(b,c,...)\n\nSyntax tips:\n(' x)     - return x unevaluated\n(# x y)   - set uneval x to y\n(#! x y)  - set evalled x to y\n(! x)     - execute list x, ret last\n(!: ...)  - execute unpacked list\n(? x y)   - if x execute y\n(? x y z) - if x then y else z\n\nCommands:\n'&': sum the arguments\n'*': multiply the arguments\n'-': subtract\n'/': division\n'/-': modulo\n':': print (accepts :' as a parameter to print strings)\n'@': access the nth element of a list\n'@#': append argument to list\n'#@': x[y]=z\n'--': negate\n'**': power\n'!**': logarithm\n'#-#': range(may not work)\n'@..': list from args\n'$$$': load file\n'!?': get input :' for strings\n'###': save file\n""",
+MAN={'todo':'Finish from and to JSON and loading/saving and relinking networks\nAdd mv, cp\nAdd bdsm as normal apt, not script engine',
+
+     'pyta':"""\nPyta programming language\nUnstable and experimental\nFeatures may not work correctly\n\nOverall syntax:\n(a b c ...) => a(b,c,...)\n\nSyntax tips:\n(' x)     - return x unevaluated\n(# x y)   - set uneval x to y\n(#! x y)  - set evalled x to y\n(! x)     - execute list x, ret last\n(!: ...)  - execute unpacked list\n(? x y)   - if x execute y\n(? x y z) - if x then y else z\n\nCommands:\n'&': sum the arguments\n'*': multiply the arguments\n'-': subtract\n'/': division\n'/-': modulo\n':': print (accepts :' as a parameter to print strings)\n'@': access the nth element of a list\n'@#': append argument to list\n'#@': x[y]=z\n'--': negate\n'**': power\n'!**': logarithm\n'#-#': range(may not work)\n'@..': list from args\n'$$$': load file\n'!?': get input :' for strings\n'###': save file\n""",
 
      'man':"""This is GNU manual page\n\nYou may want to find some help there.\njust type 'man <topic>'\nGood luck\n\nUseful commands: ls, cd, dog, pyta, ssh, lgbt, chmod, mkdir, rm""",
 
@@ -88,7 +90,8 @@ class Machine(CoreMachine):
                       'nmap':self.__nmap,
                       'chmod':self.__chmod,
                       'mkdir':self.__mkdir,
-                      'rm':self.__rm}
+                      'rm':self.__rm,
+                      'json':self.__json}
         self.motd = "Hello in cra.sh OS\nversion 1.0.3 build nightly\nMachine: "+self.ip_address+"\n\n"
     def __cd(self,*args):
         if not args:
@@ -282,3 +285,5 @@ class Machine(CoreMachine):
         print("No such command, man")
     def __pwd(self,name):
         return self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+name
+    def __json(self,*args):
+        print(self.to_dict())
