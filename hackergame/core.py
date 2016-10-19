@@ -33,11 +33,10 @@ class Folder(File):
     def get_files(self):
         return self.root.get_files(self.name)
     def to_dict(self):
-        return super(Folder,self).to_dict()
+        return {'perms':self._perms,'abs_name':self.name}
     @classmethod
     def from_dict(cls,node,root):
-        obj = super(Folder,self).from_json(node)
-        obj.root = root
+        obj = Folder(node['abs_name'],root,node['perms'])
         return obj
 
 class Root(Folder):
@@ -59,6 +58,12 @@ class Root(Folder):
                 if('\\' not in key[1:]):
                     dictionary[key] = self.memory[key]
         return dictionary
+    def reconstruct(self,dict):
+        for key in dict:
+            if dict[key]['perms'][2]==False:
+                self.memory[key] = File.from_dict(dict[key])
+            else:
+                self.memory[key] = Folder.from_dict(dict[key],self)
 
 class CoreMachine(object):
     """
@@ -128,4 +133,10 @@ class CoreMachine(object):
         return node
     @classmethod
     def from_dict(cls,node):
-        raise NotImplementedError
+        obj = cls(node['ip_address'],node['sudo_password'])
+        obj.network = node['network']
+        obj.motd = node['motd']
+        obj.bye=  node['bye']
+        obj.root.reconstruct(node['root'])
+        obj.env = node['env']
+        return obj
