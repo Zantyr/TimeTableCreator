@@ -1,0 +1,433 @@
+#! /usr/bin/coconut
+
+# TODO:
+# - abstract connectivity - halfDone
+# - spawning actors - halfDone
+# - sending messages
+
+if __name__=="__main__":
+    import akkon
+    akkon.main()
+    quit()
+
+import atexit
+import json
+import multiprocessing
+import os
+import pickle
+import socket
+import sys
+import threading
+import time
+
+AKKON_REPL_HELP = """
+quit - kill Akkon actorsystem, leave instances intact
+spawn [NO] [actorname] - spawn actors into the system
+stats - display statistics
+list - list all ActorClasses available in this node
+"""
+
+class AkkonError(RuntimeError):
+    pass
+
+
+class ProtoSocket(object):
+    """
+    Abstracts away connectivity
+    """
+    def __init__(self, kind, address, callback = None):
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        case kind:
+            match "pushing":
+                self.socket.connect(address)
+            match "pulling":
+                self.socket.bind(address)
+                self.socket.listen(3) # accepting thread
+                self.thread = threading.Thread(target=self.accept_loop, args=(callback,))
+                self.thread.daemon = True
+                self.thread.start()
+            match _:
+                raise AkkonError("There is no such kind of socket as " + kind)
+
+    def request(self, order):
+        order = pickle.dumps(order)
+        order |> len |> "{:4}".format |> (x -> x.encode()) |> self.socket.send
+        order |> self.socket.send
+        response = self.socket.recv(4)
+        try:
+            return response |> int |> self.socket.recv |> pickle.loads
+        except ValueError:
+            pass # reset protocol
+
+    def send(self, args):
+        self.socket.send(args.encode() if type(args) != bytes else args)
+
+    def close():
+        pass
+
+    def accept_loop(self, callback):
+        while True:
+            (receiver, addr) = self.socket.accept()
+            callback(receiver, addr)
+
+
+class Environment(object):
+    """
+    Singleton having all actors in this machine
+    Monitors all actors within one Python environment
+    """
+    def __init__(self, master_process_communication):
+        self.actors = {}
+        self.connectivity = master_process_communication
+        self.active = True
+
+    def add(self, actor_prototype):
+        actor = actor_prototype()
+        self.actors[actor_prototype].append(actor)
+        actor.thread = threading.Thread(target=actor.run)
+        actor.thread.daemon = True
+        actor.thread.start()
+
+    def add_prototype(self, actor_prototype, definition):
+        pass
+
+    def run(self):
+        while self.active:
+            datagram = self.connectivity.recv()
+            case datagram:
+              match ("TERMINATE", _):
+                self.active = False
+              match _:
+                pass
+
+def create_environment_callback(pipe):
+    """
+    Because of multiprocessing
+    """
+    env = Environment(pipe)
+    env.run()
+
+
+class MasterProcess(object):
+    """
+    Creates and manages actors on a single machine.
+    """
+
+    DEFAULT_REMOTE_ADDRESS = "0.0.0.0"
+    DEFAULT_REMOTE_PORT = 1235
+    MAX_RETRIES = 3
+
+    def __init__(self, config):
+        self.password = config["secret_key"]
+        self.actor_repo = {}
+        self.n_processes = int(config["n_processes"])
+        self.wait_for_remote = False if config["wait_for_remote"] in (False, "False") else True
+        self.REMOTE_ADDRESS = self.DEFAULT_REMOTE_ADDRESS
+        self.REMOTE_PORT = self.DEFAULT_REMOTE_PORT
+        if "actors" in config.keys():
+            for actor_definition in config["actors"]:
+                pass
+        if "actor_repo" in config.keys():
+            pass # load available actor definitions from repository
+
+    def run(self):
+        atexit.register(self.at_exit)
+        self.environments = []
+        for i in range(self.n_processes):
+            proxime, remote = multiprocessing.Pipe()
+            process = multiprocessing.Process(target=create_environment_callback,
+                args=(proxime,))
+            process.start()
+            self.environments.append((process, remote))
+        if self.wait_for_remote:
+            self.passive()
+        else:
+            self.active()
+
+    def passive(self):
+        remote = ProtoSocket("pulling", (self.REMOTE_ADDRESS, self.REMOTE_PORT), self.acceptor_callback)
+        while True:
+            time.sleep(1)
+
+    def acceptor_callback(self, receiver, addr):
+        self.log("Connection from {} estabilished".format(addr))
+        passwd = receiver.recv(len(self.password))
+        if passwd.decode() != self.password:
+            self.log("Password mismatch")
+            receiver.close()
+        else:
+            dat = ""
+            while True:
+                request = receiver.recv(4) |> int |> receiver.recv |> pickle.loads
+                response = self.process(request) |> pickle.dumps
+                len(response) |> "{:4}".format |> x->x.encode() |> receiver.send
+                receiver.send(response)
+        self.log("Connection closed")
+
+    def active(self):
+        tries = 0
+        while tries < self.MAX_RETRIES:
+            sender = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                i = 0
+                sender.connect((self.REMOTE_ADDRESS, self.REMOTE_PORT))
+            except socket.error:
+                i += 1
+                time.sleep(3)
+        self.log("Maximum number of retries exceeded, cannot find a master, switching to passive mode")
+        self.passive()
+
+    def process(self, request):
+        case request:
+          match ("TERMINATE", _):
+            return ("OK", None)
+          match ("GET_LOAD", _):
+            return ("OK", self.get_load())
+          match ("GET_ACTORS", _):
+            return ("", self.get_)
+          match ("INSTALL_ACTOR", actor_definition):
+            return ("", None)
+          match ("SPAWN_ACTOR", actor_name):
+            return ("", None)
+          match _:
+            return ("NOT_UNDERSTOOD", None)
+
+    def log(self, x):
+        print(x)
+
+    def at_exit(self):
+        [pipe.send(("TERMINATE", None)) for env, pipe in self.environments]
+
+
+class ActorSystem(object):
+    """
+    Singleton having all actors in one closed system, having all environments hosting those Actors
+    Load balancing is here, monitoring is here
+    """
+    def __init__(self, config):
+        self.environments = []
+        for env in config["environments"]:
+            self.environments.append({
+                "connectivity": (env["address"], env["port"]),
+                "orders": env["configure"],
+                "secret_key": env["secret_key"]
+            })
+        self.actors = {}
+        for act in config["actors"]:
+            name = act["name"]
+            self.actors[name] = act
+        self.wait_for_environments = False
+        self.repository = ActorRepository()
+
+    def spawn(self, actor_class, num = 1):
+        # check environment loads and pick the one with smallest percent load
+        for i in range(num):
+            loads = []
+            for sock in self.connections:
+                case sock.request(("GET_LOAD", None)):
+                    match ("OK", load):
+                        loads.append(load)
+                    match (_, _):
+                        raise AkkonError("Protocol Error")
+            min_load = loads.index(min(loads))
+            sock = self.connections[min_load]
+            case sock.request(("GET_ACTORS", None)):
+                match ("OK", actors):
+                    if actor_class.name not in actors:
+                        response = sock.request(("INSTALL_ACTOR", actor_class.serialize()))
+                        if response[0] != "OK":
+                            AkkonError("Protocol Error - cannot send actorclass somehow")
+                match (_, _):
+                    raise AkkonError("Protocol Error")
+            response = sock.request(("SPAWN_ACTOR", actor_class.name))
+            if response[0] != "OK":
+                AkkonError("Protocol Error - cannot send actorclass somehow")
+
+    def manage(self):
+        while self.management_thread_active == True:
+            time.sleep(1)
+
+    def run(self):
+        self.connections = [ProtoSocket("pushing", env["connectivity"]) for env in self.environments]
+        [sock.send(env['secret_key']) for env, sock in zip(self.environments, self.connections)]
+        for act in self.actors.values():
+            for i in range(act["count"]):
+                self.spawn(act["name"])
+        for id, env in enumerate(self.environments):
+            for order in env["orders"]:
+                self.connections[id].request(order)
+        self.management_thread = threading.Thread(target=self.manage)
+        self.management_thread_active = True
+        self.management_thread.start()
+        self.repl()
+
+    def repl(self):
+        print("Reification complete, entering REPL mode")
+        while self.management_thread_active:
+            try:
+                command = input(">> ")
+                if command == "help":
+                    print(AKKON_REPL_HELP)
+                elif command == "quit":
+                    self.quit()
+                elif command == "list":
+                    all_classes = self.repository.list()
+                    print("All actor classes available in this node:")
+                    for i in all_classes:
+                        print(i.name)
+                elif command.startswith("spawn"):
+                    _, number, name = command.split(" ", 2)
+                    try:
+                        actor_class = self.repository.get(name)
+                    except KeyError:
+                        print("This actor class does not exist in the repository")
+                    else:
+                        self.spawn(actor_class, int(number))
+                elif command == "status":
+                    self.status()
+                else:
+                    print("Command unknown")
+            except KeyboardInterrupt:
+                print("Keyboard Interrupts disabled")
+            except ValueError:
+                print("Cannot parse command correctly (or other ValueError)")
+
+    def status(self):
+        print("This should return whole status of the system")
+
+    def quit(self):
+        self.management_thread_active = False
+
+
+class ActorRepository(object):
+    def __init__(self, path = ".akkon_repo"):
+        self.path = path
+        self.actor_classes = {}
+        if not os.path.isdir(path):
+            if os.path.exists(path):
+                os.path.remove(path)
+            os.mkdir(path)
+        akkon_files = [os.path.join(folder, fname) for folder, _, files in os.walk(path) for fname in files if fname.endswith(".akk")]
+        for fname in akkon_files:
+            with open(fname) as f:
+                definition = f.read()
+                self.parse_specification(definition, fname)
+                if definition:
+                    self.actor_classes.append(ActorClass(definition))
+
+    def list(self):
+        return self.actor_classes.keys()
+
+    def get(self, name):
+        return self.actor_classes[name]
+
+    def add(self, specification):
+        pass
+
+    def parse_specification(self, specification, source_name = None):
+        specification = json.loads(specification)
+        # NAME, load, dependencies, messages, functions, services et caetera
+        # check if code exists in the specified path
+        return specification
+
+
+class Actor:
+    def __init__(self):
+        self.__inbox = []
+        self.__thread = []
+        self.active = True
+        self.asleep = False
+
+    def __receive(self, message):
+        if message.type in self.message_types.keys():
+            handler = self.message_types[message.type]
+            response = handler(self.message)
+        else:
+            response = message.fail()
+        if response:
+            response.send()
+
+    def __work(self):
+        while self.active and not self.asleep:
+            # get first message
+            # process this message
+            self._receive
+
+
+class ActorClass(object):
+    def __init__(self, definition):
+        self.message_types = {}
+
+    def instantiate(self, internal_state = None):
+        actor = Actor()
+        # add required message types to the actor
+        # configure the actor (sleep time and such)
+        # if internal_State exists, update this actor properties by the state
+        return actor
+
+    def serialize(self):
+        pass
+
+
+class ActorAddress:
+    """
+    Reference to an Actor
+    """
+    def send():
+        # check, whether given actor is local or remote
+        # if local - pass the message directly
+        # if remote -
+        pass
+
+    def __or__(self, message):
+        self.send(message)
+        return self
+
+class Service:
+    """
+    Service is a functionality shared by many actors. Invoking Service finds
+    an appropriate Actor for given request - you needn't find concrete implementation
+    """
+
+class Message:
+    pass
+
+
+class IO:
+    pass  # composable by >> # scope creep
+
+
+def main():
+    AKKON_ROLE = "slave"  # slave or master
+    AKKON_CONFIG = {"secret_key": "not_Really_secret",
+                    "n_processes": 2,
+                    "wait_for_remote": True,
+                    "environments": [{
+                        "address": "127.0.0.1",
+                        "port": MasterProcess.DEFAULT_REMOTE_PORT,
+                        "configure":[],
+                        "secret_key": "not_Really_secret"
+                    }],
+                    "actors":[]}
+    for i in sys.argv[1:]:
+        try:
+            k,v = i.split("=")
+            AKKON_CONFIG[k] = v
+        except ValueError:
+            raise AkkonError("Cannot understand option: " + i)
+    if "config" in AKKON_CONFIG.keys():
+        try:
+            with open(AKKON_CONFIG["config"]) as f:
+                cfg = json.load(f)
+            AKKON_CONFIG = cfg.update(AKKON_CONFIG)
+        except IOError:
+            raise AkkonError("Cannot read configuration file - does it exist?")
+    if "role" in AKKON_CONFIG.keys():
+        AKKON_ROLE = AKKON_CONFIG["role"]
+    if AKKON_ROLE == "slave":
+        AKKON_MAIN = MasterProcess(AKKON_CONFIG)
+    elif AKKON_ROLE == "master":
+        AKKON_MAIN = ActorSystem(AKKON_CONFIG)
+    else:
+        raise AkkonError("Incorrect role")
+    AKKON_MAIN.run()

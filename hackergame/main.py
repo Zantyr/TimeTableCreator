@@ -41,8 +41,8 @@ if __name__=="__main__":
                 machine.network = new_network
     except AssertionError,IOError:
         try:
-            from line import main
-            vector = main()
+            import line
+            vector = line.main()
         except ImportError:
             print("There is no default scenario - plain mode")
             vector=[Machine('192.168.0.0','speerrceok')]

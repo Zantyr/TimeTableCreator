@@ -109,6 +109,8 @@ class CoreMachine(object):
         return self.calls[call]()
     def save_file(self,abs_name,content="",permissions=(True,True,False)):
         self.root.memory[abs_name] = File(content,permissions)
+    def save_literal_file(self,abs_name,handler):
+        self.root.memory[abs_name] = handler
     def save_folder(self,abs_name,permissions=(True,True,True)):
         self.root.memory[abs_name] = Folder(abs_name,self.root,permissions)
     def add_connection(self,machine):

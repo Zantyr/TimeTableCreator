@@ -5,13 +5,14 @@ from __future__ import division
 from time import sleep
 try: input=raw_input
 except NameError: pass
-from core import CoreMachine
+from core import CoreMachine,File
 from pyta import pyta
+import json
 
 #manual
 MAN={'todo':'Finish from and to JSON and loading/saving and relinking networks\nAdd mv, cp\nAdd bdsm as normal apt, not script engine',
 
-     'pyta':"""\nPyta programming language\nUnstable and experimental\nFeatures may not work correctly\n\nOverall syntax:\n(a b c ...) => a(b,c,...)\n\nSyntax tips:\n(' x)     - return x unevaluated\n(# x y)   - set uneval x to y\n(#! x y)  - set evalled x to y\n(! x)     - execute list x, ret last\n(!: ...)  - execute unpacked list\n(? x y)   - if x execute y\n(? x y z) - if x then y else z\n\nCommands:\n'&': sum the arguments\n'*': multiply the arguments\n'-': subtract\n'/': division\n'/-': modulo\n':': print (accepts :' as a parameter to print strings)\n'@': access the nth element of a list\n'@#': append argument to list\n'#@': x[y]=z\n'--': negate\n'**': power\n'!**': logarithm\n'#-#': range(may not work)\n'@..': list from args\n'$$$': load file\n'!?': get input :' for strings\n'###': save file\n""",
+     'pyta':"""\nPyta quantum programming language\nUnstable and experimental\nFeatures may not work correctly\n\nOverall syntax:\n(a b c ...) => a(b,c,...)\n\nSyntax tips:\n(' x)     - return x unevaluated\n(# x y)   - set uneval x to y\n(#! x y)  - set evalled x to y\n(! x)     - execute list x, ret last\n(!: ...)  - execute unpacked list\n(? x y)   - if x execute y\n(? x y z) - if x then y else z\n\nCommands:\n'&': sum the arguments\n'*': multiply the arguments\n'-': subtract\n'/': division\n'/-': modulo\n':': print (accepts :' as a parameter to print strings)\n'@': access the nth element of a list\n'@#': append argument to list\n'#@': x[y]=z\n'--': negate\n'**': power\n'!**': logarithm\n'#-#': range(may not work)\n'@..': list from args\n'$$$': load file\n'!?': get input :' for strings\n'###': save file\n""",
 
      'man':"""This is GNU manual page\n\nYou may want to find some help there.\njust type 'man <topic>'\nGood luck\n\nUseful commands: ls, cd, dog, pyta, ssh, lgbt, chmod, mkdir, rm""",
 
@@ -31,6 +32,11 @@ MAN={'todo':'Finish from and to JSON and loading/saving and relinking networks\n
 
      'rm':'Removes an element, either file or folder. Doesn\'t do it recursively.'}
 
+def HWDP(folder,password=None):
+    if password==None: content = json.dumps(folder)
+    else: content = json.dumps(dict(folder).update({'password':password}))
+    return File(content.encode('base64'))
+
 def archive_manager(machine):
     print("This is the Heavily Wicked Disposer of Packages")
     archivename = '\\' + input('Give me filename: ')
@@ -46,8 +52,8 @@ def archive_manager(machine):
             print('Wrong password. Termin@ting...')
             return
     for i in archive:
-        machine.save_file(archivename+i,archive[i])
-    machine.save_folder(archivename)
+        machine.save_file(archivename+"_dump"+i,archive[i])
+    machine.save_folder(archivename+"_dump")
 
 def password_breaker(machine):
     print("by HAXX0R team\n\nThis is...\n+-      |      +-,            |\n| \\    -+-  -  | |         -  |\n+-/ | | |    \\ +<  | /,-,   \\ | /\n|   | | |  ,-+ | | |/ |-' ,-+ |<\n|   \\_/ \\_ '-+ +-' |  \\_  '-+ | \\\n     /\n    -\n")
@@ -287,3 +293,16 @@ class Machine(CoreMachine):
         return self.env["$PWD"]+("\\" if self.env["$PWD"]!="\\" else "")+name
     def __json(self,*args):
         print(self.to_dict())
+    def cra_sh_core(self,user):
+        self.save_folder('\\home\\'+user+'\\Documents')
+        self.save_folder('\\home\\'+user+'\\Downloads')
+        self.save_folder('\\home\\'+user)
+        self.save_folder('\\home')
+        self.save_file('\\bin\\bdsm','')
+        self.save_file('\\bin\\pyta','')
+        self.save_file('\\bin\\cra.sh','')
+        self.save_file('\\bin\\nmap','')
+        self.save_file('\\bin\\lgbt','')
+        self.save_folder('\\bin')
+        self.save_file('\\dev\\std','')
+        self.save_folder('\\dev')
