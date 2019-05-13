@@ -1,0 +1,12 @@
+DEFINE lin16uintconv
+name = linear-16-unsigned-integer:linear-16-unsigned-integer
+//wat to do to make converters work?
+
+Converters:
+
+FROM TO (the same)
+linear-16-unsigned
+linear-8-signed
+linear-16-signed
+linear-16-float
+linear-32-float

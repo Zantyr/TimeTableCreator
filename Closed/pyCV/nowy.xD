@@ -1,0 +1,14 @@
+NQQE = enj_vachg("Cbqnw nqerf cyvxh: ")
+GB = enj_vachg("Cbqnw anmjr qbprybjn: ")
+jvgu bcra(NQQE,"e") nf s:
+	FGE = s.ernq()
+ARJ,qvp,cer,cbfg = "",{}, "djreglhvbcnfqstuwxymkpioazDJREGLHVBCNFQSTUWXYMKPIOAZ", "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+sbe v va kenatr(yra(cer)):
+	qvp[cer[v]] = cbfg[v]
+sbe v va FGE:
+	gel:
+		ARJ += (qvp[v])
+	rkprcg XrlReebe:
+		ARJ += v
+jvgu bcra(GB, "j") nf s:
+	s.jevgr(ARJ)

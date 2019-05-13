@@ -1,0 +1,10 @@
+$sql = "SELECT * FROM ".$db.".xD WHERE title LIKE '%".$searchstr."%'";
+
+DB:
+	ID
+	PARENT ID
+	AUTHOR
+	
+At post of given ID array_push() all PARENT ID
+
+So will publish all subposts

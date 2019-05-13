@@ -1,0 +1,254 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title></title>
+<style>
+a
+{
+	text-decoration:none;
+	color: #007;
+}
+a:hover
+{
+	color: #a50;
+}
+div
+{
+	font-family: monospace;
+}
+form
+{
+	display: inline-block;
+}
+p
+{
+	display: block;
+}
+span
+{
+	display: inline-block;
+	vertical-align: middle;
+}
+.menu
+{
+	background-color: #f9f9f9;
+}
+.left-menu
+{
+	float: left;
+	display:inline-block;
+	width: 25%;
+	min-width: 300px;
+	background-color: #f9f9f9;
+}
+.center-menu
+{
+	width: 1000px;
+	max-width: 49%;	
+	display:inline-block;
+	background-color: #f9f9f9;
+}
+.right-menu
+{
+	display:inline-block;
+	float: right;
+	width: 25%;
+	min-width: 300px;
+	background-color: #f9f9f9;
+}
+.left-menu:hover .menu-content
+{
+	display: block;
+}
+.menu-content 
+{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+	width: 25%;
+    z-index: 1;
+}
+.search-input
+{
+	display:inline-block;
+	width: 70%;
+}
+.search-submit
+{
+	display:inline-block;
+	width: 20%;
+}
+.right-menu:hover .menu-content
+{
+	display: block;
+}
+.menu-account-image-block
+{
+	display:inline-block;
+}
+.menu-account-image
+{
+	display:inline-block;
+	width: 64px;
+	height: 64px;
+	margin: 5 5 5 5;
+}
+.menu-account-name-block
+{
+	display:inline-block;
+}
+.menu-account-name
+{
+	vertical-align: middle;
+}
+.menu-account-status
+{
+	vertical-align: middle;
+}
+.post-form
+{
+	background-color: #eee;
+	width: 50%;
+	margin:10px auto 0 auto;
+}
+.post-submit
+{
+	display: inline-block;
+	margin: 0 10px 10px 0;
+	float: right;
+}
+.feed
+{
+	background-color:#eee;
+	width:50%;
+	margin:0 auto;
+}
+.feed-element
+{
+	background-color:#ddd;
+	margin: 8px 8px 8px 8px;
+}
+.feed-element-author
+{
+	color: #f00;
+	margin: 3px 3px 8px 3px;
+}
+.feed-element-like-comment-rip
+{
+	margin: 5px 0px 0px 0px;
+}
+.post
+{
+	margin: 10px 0px 0px 0px;
+	width: 100%;
+}
+.post-textarea-fake
+{
+	background-color:#fff;
+	color: #111;
+	border: 1px;
+	border-style: solid;		
+	margin: 0px 10px 0px 10px;	
+	width: auto;
+}
+</style>
+</head>
+<body>
+<div class="menu" width="100%">
+	<div class="left-menu">
+		<a><p>Strona Gówna Pejsbuka</p></a>
+		<div class="menu-content">
+			<a href="profile.html"><p>Profile</p></a>
+			<a href="#"><p>My Files</p></a>
+		</div>
+	</div>
+	<div class="center-menu">
+		<form method="POST" action="#">
+			<table><tr>
+			<td class="search-input"><input type="text" name="query" placeholder="Enter search query there..." required></td>
+			<td class="search-submit"><input type="submit" name="input" value="search"></td>
+			</tr></table>
+		</form>
+	</div> 
+	<div class="right-menu">
+		<a href="#"><p>Logout</p></a>
+		<div class="menu-content">
+			<div class="menu-account">
+				<div class="menu-account-image-block">
+					<img src="rip.jpg" class="menu-account-image" alt="Twój portret" title="To Ty, chujku">
+				</div>
+				<div class="menu-account-name-block">
+					<p class="menu-account-name"><b>Paweł Tomasik</b></p>
+					<p class="menu-account-status"><i>Webmaster i mistrz świata</i></p>
+				</div>
+			</div>
+			<a href="#"><p>Settings</p></a>
+			<a href="#"><p>Log the fuck out</p></a>
+		</div>
+	</div>	
+</div>
+<div class="content" width="100%">
+	<div class="post-form">
+		<form class="post" method="POST" action="#">
+			<div class="post-textarea-fake" contenteditable name="content">Wpisz posta tutaj...</div>
+			<input class="post-submit" type="submit" name="input" value="Tostuj"></td>			
+		</form>
+	</div>
+	<div class="feed">
+		<div class="feed-element">
+			<div class="feed-element-author"><b>
+				Paweł Przybysz
+			</b></div>			
+			Iksduem
+			<div class="feed-element-like-comment-rip">
+			<a href="#">Like</a>&middot;
+			<a href="#">Comment</a>&middot;
+			<a href="#">Subscrub</a>
+			</div>
+		</div>
+		<div class="feed-element">
+			<div class="feed-element-author"><b>
+				Mirosław Jagiellak
+			</b></div>			
+			Jestem Bogiem
+			<div class="feed-element-like-comment-rip">
+			<a href="#">Like</a>&middot;
+			<a href="#">Comment</a>&middot;
+			<a href="#">Subscrub</a>
+			</div>
+		</div>
+		<div class="feed-element">
+			<div class="feed-element-author"><b>
+				Fukken Admin			
+			</b></div>			
+			Post dla Karaska
+			<div class="feed-element-like-comment-rip">
+			<a href="#">Like</a>&middot;
+			<a href="#">Comment</a>&middot;
+			<a href="#">Subscrub</a>
+			</div>
+		</div>
+		<div class="feed-element">
+			<div class="feed-element-author"><b>
+				42 to ostateczna odpowiedź na każde pytanie			
+			</b></div>			
+			check it out:<br>
+			Jesli kurwa to nie dlugosc zapierdalaj do kurwen
+			Niech kurwa to 1
+			Niech znak to spacja
+			Wjeb znak w drugi
+			Dodaj 1 do dlugosc
+			Niech pierwszy to drugi
+			Niech drugi to pusty
+			Odejmij 1 od powtorka
+			<div class="feed-element-like-comment-rip">
+			<a href="#">Like</a>&middot;
+			<a href="#">Comment</a>&middot;
+			<a href="#">Subscrub</a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

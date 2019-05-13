@@ -1,0 +1,49 @@
+NAKURW
+
+Features:
+All Is String. No variable types.
+Harems are dictionaries. Harem are castable onto strings.
+
+To Do:
+Executing Commands
+Greater Lesser Comparison
+Functions
+Alternative I/O - net, files
+String Cutting
+Multihareming
+
+Commands:
+#...
+NIECH ... TO ...
+WYKURW/WYJEB ... NA EKRAN[ BEZ ENTERA]
+ZAPYTAJ O ...[ SLOWAMI ...]
+... TU BYL
+ZAPIERDALAJ DO ...
+JEŚLI ... TO[ NIE] ... ZAPIERDALAJ DO ...
+JEŚLI ... [NIE ]BRZMI ... ZAPIERDALAJ DO ...
+DOJEB ... DO ...[ BEZ SPACJI]
+ZALOZ HAREM ...
+WJEB ... W ...
+WYJEB KURWE NR ... Z ...[ DO ...| W PIZDU]
+WYPIERDALAJ[ Z OKRZYKIEM ...]
+DODAJ ... DO ...
+ODEJMIJ ... OD ...
+POMNOZ ... PRZEZ ...
+PODZIEL ... PRZEZ ...
+MODULO[ Z] ... PRZEZ ...
+
+To implement commands(some):
+
+ZAPIERDALAJ Z POWROTEM
+NAKURW ...
+WYJEB ... W INTERNET
+WYJEB ... NA STOS
+OTWÓRZ ...
+WYJEB ... DO PLIKU
+WYCZYTAJ ... Z PLIKU
+
+Examples:
+	PROSZĘ NAKURWIĆ LITERY OD 3 DO 5 Z HASŁA "POJEB"
+
+Operator and Assignment
+Different Channels (TCPIP/Screen/Module)

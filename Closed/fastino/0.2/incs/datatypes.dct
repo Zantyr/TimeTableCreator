@@ -1,0 +1,7 @@
+{"16int":"uint",
+"16-unsigned-integer":"uint",
+"16-signed-integer":"int",
+"16-float":"float",
+"32-float":"double",
+"8-signed-byte":"byte"
+}

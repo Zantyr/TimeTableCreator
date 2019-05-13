@@ -1,0 +1,102 @@
+Zaloz harem pusty
+Zaloz harem pierwszy
+Zaloz harem drugi
+Niech dlugosc to 1
+Niech kutas to 0
+Zapytaj o ziarno
+Zapytaj o iteracje
+Niech spacja brzmi  
+#MLG
+	Niech kurwa to ziarno
+	Modulo z kurwa przez 2
+	Jesli kurwa brzmi 1.0 zapierdalaj do test
+		Wjeb spacja w pierwszy
+		Dodaj 1 do dlugosc
+		Niech napis brzmi KURWWA
+		Wyjeb na ekran napis
+	#test
+	Jesli kurwa brzmi 0.0 zapierdalaj do tester
+		Niech znak brzmi #
+		Wjeb znak w pierwszy
+		Dodaj 1 do dlugosc
+	#tester
+	Podziel ziarno przez 2
+	Ujeb ziarno
+	Jesli ziarno nie brzmi 0.0 zapierdalaj do MLG
+Dodaj 0 do dlugosc
+#blazeit
+	Niech powtorka to iteracje
+	#noscope
+		#wyjebondo
+			Wyjeb kurwe nr kurwa z pierwszy do znak
+			Wyjeb znak na ekran bez entera
+			Dodaj 1 do kurwa
+			Jesli kurwa to nie dlugosc zapierdalaj do wyjebondo
+		Wyjeb spacja na ekran
+		Niech kurwa to 2
+		Odejmij 1 od dlugosc
+		Niech znak brzmi #
+		Wjeb znak w drugi
+		#kurwen
+			Niech pomoc to 0
+			Odejmij 1 od kurwa
+			Wyjeb kurwe nr kurwa z pierwszy do znak
+			Jesli znak to spacja zapierdalaj do skok1
+				Dodaj 1 do pomoc
+			#skok1
+			Dodaj 1 do kurwa
+			Wyjeb kurwe nr kurwa z pierwszy do znak
+			Jesli znak to spacja zapierdalaj do skok2
+				Dodaj 2 do pomoc
+			#skok2
+			Dodaj 1 do kurwa
+			Wyjeb kurwe nr kurwa z pierwszy do znak
+			Jesli znak to spacja zapierdalaj do skok3
+				Dodaj 4 do pomoc
+			#skok3
+			Niech znak to spacja
+			Jesli pomoc nie brzmi 1.0 zapierdalaj do nie1
+				Niech znak brzmi #
+			#nie1
+			Jesli pomoc nie brzmi 2.0 zapierdalaj do nie2
+				Niech znak brzmi #
+			#nie2
+			Jesli pomoc nie brzmi 3.0 zapierdalaj do nie3
+				Niech znak brzmi #
+			#nie3
+			Jesli pomoc nie brzmi 5.0 zapierdalaj do nie4
+				Niech znak brzmi #
+			#nie4
+			Jesli pomoc nie brzmi 6.0 zapierdalaj do nie5
+				Niech znak brzmi #
+			#nie5
+			Wjeb znak w drugi			
+			Jesli kurwa to nie dlugosc zapierdalaj do kurwen
+		Niech kurwa to 1
+		Niech znak brzmi #
+		Wjeb znak w drugi
+		Dodaj 1 do dlugosc
+		Niech pierwszy to drugi
+		Niech drugi to pusty
+		Odejmij 1 od powtorka
+		Jesli powtorka nie brzmi 0.0 zapierdalaj do noscope
+	Zapytaj o odwet slowami Czy zapierdalac dalej? "nie" przerywa dzialanie:
+	Jesli odwet nie brzmi nie zapierdalaj do blazeit
+Wypierdalaj z okrzykiem KURWA UDALO SIE
+
+
+Zapierdalaj do AMALGAMAT
+
+Zapytaj o x
+Zapytaj o y
+#EMELGIE
+Niech z to x
+Modulo z z przez y
+Niech x to y
+Niech y to z
+Jesli y nie brzmi 0.0 zapierdalaj do EMELGIE
+Wyjeb x na ekran
+Wypierdalaj z okrzykiem ALGORYTM EUKLIDESA KURWO
+
+#AMALGAMAT
+Wypierdalaj z okrzykiem PRZESKOK KURWA

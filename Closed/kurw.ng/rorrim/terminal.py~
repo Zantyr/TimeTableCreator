@@ -1,0 +1,57 @@
+import socket
+import threading
+
+class Terminal:
+	def setCurrentTerminal(self, integer):
+		pass
+	def send(self, asc):
+		pass
+	def write(self, asc):
+		if mode="server":
+			self.clients[self.currentclient].sendall(asc)
+		if mode="monoclient":
+			self.terminal.sendall(asc)
+		if mode="polyclient":
+			pass #STILL TO DO
+	def read(self, asc):
+		if mode="server":
+			self.clients[self.currentclient].sendall(asc)
+		if mode="monoclient":
+			self.terminal.sendall(asc)
+		if mode="polyclient":
+			pass #STILL TO DO
+	def close(self):
+		for i in self.clients:
+			i.close()
+		self.terminal.close()
+	def listen(self):
+		self.terminal.listen(2)
+		(clientsocket, address) = self.terminal.accept()
+		self.currentclient = len(self.clients)
+		self.clients.append(clientsocket)
+		#need to manage multiple sockets on the server side (and polyclient)
+	def __init__(self, mode, ADDRESS='localhost', PORT=1488):
+		self.terminal = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		self.terminal.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		self.mode = mode
+		if mode="server":
+			self.terminal.bind(('', PORT))
+			self.thread = threading.Thread(target=self.listen)
+			self.clients = []
+		if mode="monoclient":
+			self.terminal
+			self.terminal.connect((ADDRESS, PORT))
+		if mode="polyclient":
+			pass #STILL TO DO
+
+##IN FILE main##
+
+#clear console
+os.system('cls' if os.name=='nt' else 'clear')
+MainServer = Terminal("server")
+MainClient = Terminal("monoclient")
+MainClient.send("!run \"script.xD\"") #to implement
+while(True):
+	MainClient.send(raw_input("$: "))
+MainServer.close()
+MainClient.close()

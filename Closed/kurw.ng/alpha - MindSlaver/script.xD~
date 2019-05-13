@@ -1,0 +1,5 @@
+x = "Kakauko"
+x = 3
+!wyjeb x
+!wyjeb 2 + 3
+!wyjeb 2 - 3

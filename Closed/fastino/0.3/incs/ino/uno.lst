@@ -1,0 +1,28 @@
+<namespace>
+    <model>
+        <name>uno</name>
+        <A0>["analog"],[]</A0>
+         <A1>["analog"],[]</A1>
+         <A2>["analog"],[]</A2>
+         <A3>["analog"],[]</A3>
+         <A4>["analog","i2cpin"],[]</A4>
+         <A5>["analog","i2cpin"],[]</A5>
+         <_0>["digital","serialpin"],[]</_0>
+         <_1>["digital","serialpin"],[]</_1>
+         <_2>["digital","interrupt"],[]</_2>
+         <_3>["digital","interrupt","PWM"],[]</_3>
+         <_4>["digital"],[]</_4>
+         <_5>["digital","PWM"],[]</_5>
+         <_6>["digital","PWM"],[]</_6>
+         <_7>["digital"],[]</_7>
+         <_8>["digital"],[]</_8>
+         <_9>["digital","PWM"],[]</_9>
+         <_10>["digital","PWM","SPIpin"],[]</_10>
+         <_11>["digital","PWM","SPIpin"],[]</_11>
+         <_12>["digital","SPIpin"],[]</_12>
+         <_13>["digital","SPIpin"],[]</_13>
+         <serial>["serial"],["0","1"]</serial>
+         <spi>["spi"],["10","11","12","13"]</spi>
+         <i2c>["i2c","multi"],["A4","A5"]</i2c>
+    </model>
+</namespace>

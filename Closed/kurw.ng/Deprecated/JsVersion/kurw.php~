@@ -1,0 +1,5 @@
+
+<script>
+var code = <?php echo $_POST['code']; ?> ;
+
+</script>

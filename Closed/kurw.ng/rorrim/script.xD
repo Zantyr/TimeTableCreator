@@ -1,0 +1,43 @@
+#TESTY .XD
+#NAJPIERW OPERACJE ARYTMETYCZNE
+a = 2 + 3
+b = 3 - 2
+c = 3 * 2
+d = 4 / 3
+e = 3 / 3
+!wyjeb a
+!wyjeb b
+!wyjeb c
+!wyjeb d
+!wyjeb e
+
+#OPERACJE NA STRINGACH
+f = "Ciasteczko "
+g = "Kebab "
+h = f + "z kremem"
+i = f + g
+!wyjeb f
+!wyjeb g
+!wyjeb h
+!wyjeb i
+!wyjeb "Kakauko"
+
+#OPERACJE NA KURWACH
+j = !kurwa
+!dojeb j a
+!dojeb j 3
+!dojeb j "3x"
+!dojeb j f
+k = j
+l = !grubosc j
+m = !pierdolnik 2 j
+n = !pierdolnik 3 k
+o = j + k
+!wyjeb j
+!wyjeb k
+!wyjeb l
+!wyjeb m
+!wyjeb n
+!wyjeb o
+#wypierdalanie nie dziala
+#sprawdzic zmienianie

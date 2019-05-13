@@ -1,0 +1,165 @@
+CV/index.html
+<ugzy><urnq><zrgn pbagrag="grkg/ugzy" punefrg="hgs-8">
+<gvgyr>Znlor V qvqa'g svavfu VG fghqvrf, ohg V'ir tbg orfg erfhzr lbh'ir cebonoyl frra.</gvgyr>
+<yvax ery="fglyrfurrg" glcr="grkg/pff" uers="pff.pff"></urnq>
+<obql><qvi vq="one">
+<qvi vq="oybd"><n uers="rkcrevrapr.ugzy">Zl rkcrevrapr</n></qvi>
+<qvi vq="oybd"><n uers="fxvyyf.ugzy">Zl fxvyyf</n></qvi>
+<qvi vq="oybd"><n uers="vagrerfgf.ugzy">Zl vagrerfgf</n></qvi>
+<qvi vq="oybd"><n uers="grfg.ugzy">Grfg zr</n></qvi>
+<qvi vq="oybd"><n uers="pbagnpg.ugzy">Pbagnpg zr</n></qvi>
+</qvi><oe>
+<pragre><v><u2>Zl anzr vf Cnjrł Gbznfvx. V'z 22 naq V ybir guvaxvat.</u2></v></pragre><oe>
+<c>Zl terngrfg nffrgf ner: nanylgvpny guvaxvat, syhrag pbzznaq bs Ratyvfu, haqrefgnaqvat bs Znguf naq Culfvpf, cebtenzzvat novyvgvrf.</c>
+<c>V nz yrneavat Clguba naq hfrq P++, UGZY, CUC, n yvggyr ovg bs WF, naq ZngYno. V svaq zlfrys yvxvat cebtenzzvat naq trggvat vg dhvgr rnfvyl, qrfcvgr yvggyr sbezny rqhpngvba va cnegvphyne qvfpvcyvarf. Ubjrire, V pna cerfrag lbh gur fbhepr pbqrf juvpu V'ir jevggra fb sne.</c>
+</qvi></obql></ugzy>
+
+CV/contact.html
+<ugzy><urnq><zrgn pbagrag="grkg/ugzy" punefrg="hgs-8">
+<gvgyr>Znlor V qvqa'g svavfu VG fghqvrf, ohg V'ir tbg orfg erfhzr lbh'ir cebonoyl frra.</gvgyr>
+<yvax ery="fglyrfurrg" glcr="grkg/pff" uers="pff.pff"></urnq>
+<obql><qvi vq="one">
+<qvi vq="oybd"><n uers="rkcrevrapr.ugzy">Zl rkcrevrapr</n></qvi>
+<qvi vq="oybd"><n uers="fxvyyf.ugzy">Zl fxvyyf</n></qvi>
+<qvi vq="oybd"><n uers="vagrerfgf.ugzy">Zl vagrerfgf</n></qvi>
+<qvi vq="oybd"><n uers="grfg.ugzy">Grfg zr</n></qvi>
+<qvi vq="oybd"><n uers="pbagnpg.ugzy">Pbagnpg zr</n></qvi>
+</qvi><oe>
+<qvi><pragre><v><u2>Yrg'f fgnl va gbhpu!</u2></v></pragre><oe>
+<c>Vs lbh'er ybbxvat sbe na rzcyblrr, na vagrea, be fvzcyl yvxr gb funer lbhe xabjyrqtr, svyy gur sbyybjvat sbez. Lbh pna nyfb svaq zr ba <n uers="uggc://yvaxrqva.pbz/va/cnjr%P5%82-gbznfvx-n27788o3">YvaxrqVa</n>. Vs lbh'ir tbg nal dhrfgvbaf, be jnag n qverpg pbagnpg, zl r-znvy vf <n uers='znvygb:gbznfvx.xjvqmla@tznvy.pbz'>gbznfvx.xjvqmla@tznvy.pbz</n></c>
+</qvi>
+<qvi><pragre><u3>Fnir lbhefrys ba zl Pbagnpg Yvfg</u3></pragre><oe>
+<sbez npgvba="fnirq.ugzy" zrgubq="CBFG">
+<gnoyr><ge><gq>Lbhe anzr:</gq><gq><vachg anzr="anzr"></gq></ge>
+<ge><gq>Lbhe pbzcnal:</gq><gq><vachg anzr="pbzcnal"></gq></ge>
+<ge><gq>Gryy zr fbzrguvat nobhg jung lbh qb:</gq><gq><vachg anzr="fzgu"></gq></ge></gnoyr>
+<c><vachg glcr='fhozvg' inyhr='Fhozvg'></c></sbez></qvi></sbez></obql></ugzy>
+
+CV/css.css
+obql {
+	sbag-snzvyl: zbabfcnpr;
+	yvar-urvtug: 1.5rz;
+	obeqre: 1ck qbggrq;
+	jvqgu: 650ck;
+	znk-jvqgu: 93ij;
+	znetva: 10ck nhgb;
+	cnqqvat: 5ck 0;
+}
+n {
+	grkg-qrpbengvba: abar;
+	pbybe: #000;
+	obeqre-obggbz: 1ck qbggrq;
+}
+n:ubire {
+	pbybe: #sss;
+	onpxtebhaq-pbybe: #000;
+	obeqre: 0ck;
+}
+#oybd {
+	qvfcynl:vayvar-oybpx;
+	onpxtebhaq-pbybe: #s9s9s9;
+	jvqgu: 18%;
+}
+
+CV/experience.html
+<ugzy><urnq><zrgn pbagrag="grkg/ugzy" punefrg="hgs-8">
+<gvgyr>Znlor V qvqa'g svavfu VG fghqvrf, ohg V'ir tbg orfg erfhzr lbh'ir cebonoyl frra.</gvgyr>
+<yvax ery="fglyrfurrg" glcr="grkg/pff" uers="pff.pff"></urnq>
+<obql><qvi vq="one">
+<qvi vq="oybd"><n uers="rkcrevrapr.ugzy">Zl rkcrevrapr</n></qvi>
+<qvi vq="oybd"><n uers="fxvyyf.ugzy">Zl fxvyyf</n></qvi>
+<qvi vq="oybd"><n uers="vagrerfgf.ugzy">Zl vagrerfgf</n></qvi>
+<qvi vq="oybd"><n uers="grfg.ugzy">Grfg zr</n></qvi>
+<qvi vq="oybd"><n uers="pbagnpg.ugzy">Pbagnpg zr</n></qvi>
+</qvi><oe>
+<qvi><pragre><v><u2>V nz bcra gb yrneavat</u2></v></pragre><oe>
+<c>Sbe n lrne V nz fhpprfshyyl pbaarpgvat fghqlvat grpuavpny gbcvpf jvgu jbex. Sbe arneyl unys n lrne V rnea nyy gur vapbzr V fcraq sbe zl yvivat.</c>
+<c>V fghql Grpuavpny Culfvpf ng Tqnńfx Havirefvgl bs Grpuabybtl, svavfuvat n onpurybe/ratvarre qrterr va Sro 2017. Zl fcrpvnyvfngvba eribyirf nebhaq pynffvp naq erarjnoyr raretl fbheprf. V unir n fbyvq onfr va ahzrevp zrgubqf naq pnyphyhf. V'ir <n uers="uggc://nevbpu.890z.pbz/PI/zng.cqs">svavfurq fpvrapr pynffrf ng Uvtu Fpubby ab 1 va Xjvqmla.</n></c>
+<c>Zl pheerag ibpngvbany rkcrevrapr vf nf sbyybjf:</c>
+<gnoyr>
+<ge><gq>Crevbq</gq><gq>Pbzcnal</gq><gq>Pvgl</gq><gq>Wbo</gq><gq>Erfcbafvovyvgvrf</gq></ge>
+<ge><gq>Qrp 2015 - ...</gq><gq>Benatr</gq><gq>Tqnńfx</gq><gq>Qrnyre Fhccbeg</gq><gq>Irevsvpngvba bs qbphzragf nppbeqvat gb n frg bs cebprqherf, pbagebyyvat gur qrogf naq onynapr bs pyvragf</gq></ge>
+<ge><gq>Nht - Frc 2015</gq><gq>Wnovy Pvephvgf</gq><gq>Xjvqmla</gq><gq>Vairagbel Pbageby</gq><gq>Qryvirel bs ryrpgebavp pbzcbaragf jvgu ertneq gb fnsrgl ehyrf, cerqrsvarq cebqhpgvba fpurqhyr; vairagnevfngvba</gq></ge>
+<ge><gq>Why - Nht 2015</gq><gq>Pneersbhe</gq><gq>Xjvqmla</gq><gq>Pnfuvre</gq><gq>Znvagnvavat tbbq eryngvbafuvcf jvgu pyvragf, xrrcvat gur evtug onynapr</gq></ge>
+<ge><gq>Nce - Wha 2015</gq><gq>Grfpb</gq><gq>Tqnńfx</gq><gq>Cebqhpg Cynprzrag</gq><gq>Hacnpxvat gur cebqhpgf naq cynpvat gurz va na ngeenpgvir znaare</gq></ge>
+</gnoyr><c></c></qvi></sbez></obql>
+
+CV/index.html
+<ugzy><urnq><zrgn pbagrag="grkg/ugzy" punefrg="hgs-8">
+<gvgyr>Znlor V qvqa'g svavfu VG fghqvrf, ohg V'ir tbg orfg erfhzr lbh'ir cebonoyl frra.</gvgyr>
+<yvax ery="fglyrfurrg" glcr="grkg/pff" uers="pff.pff"></urnq>
+<obql><qvi vq="one">
+<qvi vq="oybd"><n uers="rkcrevrapr.ugzy">Zl rkcrevrapr</n></qvi>
+<qvi vq="oybd"><n uers="fxvyyf.ugzy">Zl fxvyyf</n></qvi>
+<qvi vq="oybd"><n uers="vagrerfgf.ugzy">Zl vagrerfgf</n></qvi>
+<qvi vq="oybd"><n uers="grfg.ugzy">Grfg zr</n></qvi>
+<qvi vq="oybd"><n uers="pbagnpg.ugzy">Pbagnpg zr</n></qvi>
+</qvi><oe>
+<pragre><v><u2>Zl anzr vf Cnjrł Gbznfvx. V'z 22 naq V ybir guvaxvat.</u2></v></pragre><oe>
+<c>Zl terngrfg nffrgf ner: nanylgvpny guvaxvat, syhrag pbzznaq bs Ratyvfu, haqrefgnaqvat bs Znguf naq Culfvpf, cebtenzzvat novyvgvrf.</c>
+<c>V nz yrneavat Clguba naq hfrq P++, UGZY, CUC, n yvggyr ovg bs WF, naq ZngYno. V svaq zlfrys yvxvat cebtenzzvat naq trggvat vg dhvgr rnfvyl, qrfcvgr yvggyr sbezny rqhpngvba va cnegvphyne qvfpvcyvarf. Ubjrire, V pna cerfrag lbh gur fbhepr pbqrf juvpu V'ir jevggra fb sne.</c>
+</qvi></obql></ugzy>
+
+CV/interests.html
+<ugzy><urnq><zrgn pbagrag="grkg/ugzy" punefrg="hgs-8">
+<gvgyr>Znlor V qvqa'g svavfu VG fghqvrf, ohg V'ir tbg orfg erfhzr lbh'ir cebonoyl frra.</gvgyr>
+<yvax ery="fglyrfurrg" glcr="grkg/pff" uers="pff.pff"></urnq>
+<obql><qvi vq="one">
+<qvi vq="oybd"><n uers="rkcrevrapr.ugzy">Zl rkcrevrapr</n></qvi>
+<qvi vq="oybd"><n uers="fxvyyf.ugzy">Zl fxvyyf</n></qvi>
+<qvi vq="oybd"><n uers="vagrerfgf.ugzy">Zl vagrerfgf</n></qvi>
+<qvi vq="oybd"><n uers="grfg.ugzy">Grfg zr</n></qvi>
+<qvi vq="oybd"><n uers="pbagnpg.ugzy">Pbagnpg zr</n></qvi>
+</qvi><oe>
+<qvi><pragre><v><u2>V nz arneyl nyjnlf phevbhf</u2></v></pragre><oe>
+<c></c>
+<c>V'ir yrnq n <n uers="uggc://jjj.ynfg.sz/zhfvp/Qrss+Havxbeam">fznyy ryrpgebavp zhfvp cebwrpg</n> va uvtu-fpubby bhg bs oberqbz. V <n uers="uggc://nevbpu.890z.pbz/PI/zhm.cqs">svavfurq svefg-tenqr zhfvp fpubby ba fnkbcubar.</n></c>
+<c>V nz fbzrjung vagrerfgrq va GPT Zntvp: gur Tngurevat. V hfrq gb cynl pbzchgre tnzrf, ohg V eneryl qb vg abj.</c>
+<c>V yvxr ernqvat negvpyrf ba gur vagrearg ertneqvat qvirefr znggre. V cersre ernqvat aba-svpgvba bire zbivrf naq fgbevrf.</c></qvi></obql></ugzy>
+
+CV/saved.html
+<ugzy>
+Lbhe pbagnpg unf orra fnirq.
+</ugzy>
+
+CV/skills.html
+<ugzy><urnq><zrgn pbagrag="grkg/ugzy" punefrg="hgs-8">
+<gvgyr>Znlor V qvqa'g svavfu VG fghqvrf, ohg V'ir tbg orfg erfhzr lbh'ir cebonoyl frra.</gvgyr>
+<yvax ery="fglyrfurrg" glcr="grkg/pff" uers="pff.pff"></urnq>
+<obql><qvi vq="one">
+<qvi vq="oybd"><n uers="rkcrevrapr.ugzy">Zl rkcrevrapr</n></qvi>
+<qvi vq="oybd"><n uers="fxvyyf.ugzy">Zl fxvyyf</n></qvi>
+<qvi vq="oybd"><n uers="vagrerfgf.ugzy">Zl vagrerfgf</n></qvi>
+<qvi vq="oybd"><n uers="grfg.ugzy">Grfg zr</n></qvi>
+<qvi vq="oybd"><n uers="pbagnpg.ugzy">Pbagnpg zr</n></qvi>
+</qvi><oe>
+<qvi><pragre><v><u2>V nz n serr guvaxre</u2></v></pragre><oe>
+<c><v>N gehr fubjpnfr bs zl cebtenzzvat fxvyyf vf gb or sbhaq ng "Grfg zr" cneg</v></c>
+<c>V nz ivrjrq ol zl crref nf n engure vagryyvtrag crefba. Qhevat uvtu-fpubby V cnegvpvcngrq va inevbhf pbzcrgvgvbaf 
+<n uers="uggc://nevbpu.890z.pbz/PI/qvc1.cqs">jvgu</n> 
+<n uers="uggc://nevbpu.890z.pbz/PI/qvc2.cqs">fbzr</n> 
+<n uers="uggc://nevbpu.890z.pbz/PI/qvc3.cqs">cerggl</n> 
+<n uers="uggc://nevbpu.890z.pbz/PI/qvc4.cqs">ovt</n> 
+<n uers="uggc://nevbpu.890z.pbz/PI/qvc5.cqs">fhpprffrf</n>, nygubhtu V xabj guvf vf abg gur zbfg vzcbegnag cneg.</c>
+<c>V nz n abivpr cebtenzzre. V'z pheeragyl qrirybcvat zl fxvyyf va Clguba, nygubhtu V unir n onfvp xabjyrqtr bs P++, naq gur zbfg vzcbegnag jro grpuabybtvrf. </c>
+<c>V srry dhvgr pbzsbegnoyr fcrnxvat Ratyvfu, nygubhtu V srry orggre jvgu jevggra ynathntr. V'ir cnffrq O2 rknz jvgu n irel tbbq tenqr.</c></qvi></obql></ugzy>
+
+CV/test.html
+<ugzy><urnq><zrgn pbagrag="grkg/ugzy" punefrg="hgs-8">
+<gvgyr>Znlor V qvqa'g svavfu VG fghqvrf, ohg V'ir tbg orfg erfhzr lbh'ir cebonoyl frra.</gvgyr>
+<yvax ery="fglyrfurrg" glcr="grkg/pff" uers="pff.pff"></urnq>
+<obql><qvi vq="one">
+<qvi vq="oybd"><n uers="rkcrevrapr.ugzy">Zl rkcrevrapr</n></qvi>
+<qvi vq="oybd"><n uers="fxvyyf.ugzy">Zl fxvyyf</n></qvi>
+<qvi vq="oybd"><n uers="vagrerfgf.ugzy">Zl vagrerfgf</n></qvi>
+<qvi vq="oybd"><n uers="grfg.ugzy">Grfg zr</n></qvi>
+<qvi vq="oybd"><n uers="pbagnpg.ugzy">Pbagnpg zr</n></qvi>
+</qvi><oe>
+<qvi><pragre><v><u2>Grfg zl fxvyyf.</u2></v></pragre><oe>
+<c><v>Pheeragyl gur sbezhynf unir gb or ragrerq jvgu fcnprf orgjrra rnpu gbxra.</v></c>
+<gnoyr><ge>
+<sbez npgvba="grfg.ugzy" zrgubq="CBFG"><gq><fcna>Qvfcynl n cybg bs n shapgvba (zngcybgyvo): </fcna></gq><gq><vachg glcr="grkg" anzr="RKC" inyhr="k ^ 2 + 3"></gq><gq><vachg glcr="fhozvg" anzr="CYBG" inyhr="Cybg!"></vachg></gq></sbez></ge>
+<ge><sbez npgvba="grfg.ugzy" zrgubq="CBFG"><gq><fcna>Pnyphyngr na rkcerffvba sbe lbh: </fcna></gq><gq><vachg glcr="grkg" anzr="RKC" inyhr="k ^ 2 + 3"></gq><gq><vachg glcr="fhozvg" anzr="PNYP" inyhr="Pbzchgr!"></gq></sbez>
+</ge></gnoyr><oe>
+<c>Lbh pna nyfb ivfvg <n uers="uggc://jjj.tvguho.pbz/Mnagle">zl TvgUho nppbhag</n> sbe zber ersreraprf gb zl cebtenzzvat.</c></qvi></sbez></obql>
+

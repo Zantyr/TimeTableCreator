@@ -1,0 +1,66 @@
+START
+
+x = 1
+jesli x
+nz = True
+ilsej
+
+jesli 3 >> 2
+!wyjeb "TRUE"
+jesli 3 >> 1
+!wyjeb "TRUER"
+ilsej
+ilsej
+
+definicja chuj
+!wyjeb "PANIE WORLD EDITOR"
+ajcinifed
+
+!chuj
+
+!wyjeb "WYTAJ W SYMULATORZE KLOTNI Z LEWAKIEM/PRAWAKIEM"
+niebawiesie = True
+lewak = !kurwa
+!dojeb lewak "W MALZENSTWACH HOMOSEKSUALNYCH RODZI SIE WIECEJ DZIECI"
+!dojeb lewak "TWOJ PATRIARCHALIZM MNIE UCISKA!"
+!dojeb lewak "PRZEPROS ZA POLSKIE OBOZY ZAGLADY"
+!dojeb lewak "USTAWA ZNIESC UBOSTWO!"
+prawak = !kurwa
+!dojeb prawak "NIEWIDZIALNA REKA WOLNEGO RYNGU"
+!dojeb prawak "TY CHCIALBYS TYLKO ZREC I ZYC"
+!dojeb prawak "LEPIEJ POCZYTAJ ROTHBARDA"
+!dojeb prawak "A POZA TYM UWAZAM, ZE UNIA EUROPEJSKA POWINNA BYC ZNISZCZONA"
+y = !zapytaj "Wybierz, z kim chcesz sie klocic(prawak/lewak):"
+!wyjeb "ten program nie ma debuga"
+	jesli y == "lewak"
+		slownik = lewak
+		niebawiesie = False
+	ilsej
+	jesli y == "prawak"
+		slownik = prawak
+		niebawiesie = False
+	ilsej
+wykurw
+jesli nz == 1
+	!wyjeb "Jak juz skonczysz, napisz 'Wygrales.'"
+	!wyjeb ""
+	z = 0
+	odpowiedzi = !kurwa
+	dopoki y != "Wygrales."
+		y = !zapytaj "Twoj argument: "
+		!dojeb odpowiedzi y
+		!wyjeb !pierdolnik z slownik
+		z = z + 1
+		jesli z == 4
+			z = 0
+		ilsej
+	ikopod
+	!wyjeb "XDDDDD"
+	!wyjeb ""
+	!wyjeb "Twoje odpowiedzi: "
+	x = 0
+	dopoki x != !grubosc odpowiedzi
+		!wyjeb !pierdolnik x odpowiedzi
+		x = x + 1
+	ikopod
+ilsej

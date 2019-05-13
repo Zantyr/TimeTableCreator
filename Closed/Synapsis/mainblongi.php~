@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>The Lair of Arioch</title>
+<meta content="text/html" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+
+<div id="center"><h1><a href="index.php">
+The Lair Of Arioch
+</a></h1></div>
+
+<div id="menu">
+<?php
+include "menu.php";
+?>
+</div>
+
+<br>
+<div id="column">
+<?php
+$servername = "localhost";
+$username = "16813096_main";
+$passwrd = "Zantyr321";
+$conn = new mysqli($servername, $username, $passwrd);
+if (mysqli_connect_error()) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+if($_GET["all"]!="")
+{
+	$sql = "SELECT * FROM 16813096_main.users";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) 
+	{
+	    while($row = mysqli_fetch_assoc($result))
+		{
+			{
+				echo "<a href='mainblongi.php?author=".$row["name"]."'>";
+				echo ($row["name"]);
+				echo "</a><br>";
+	
+			}
+	    	}
+	}
+	else
+	{
+	die("No users found.<br>");
+	}	
+	die();
+}
+if($_GET["author"]!="")
+{
+		$sql = "SELECT * FROM 16813096_main.blongi WHERE author='".$_GET["author"]."' ORDER BY id DESC";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) 
+		{
+		    while($row = mysqli_fetch_assoc($result))
+			{
+				{
+					echo "<a href='blongi.php?post=" . $row["id"] . "&author=".$_GET["author"]."'>";
+					echo $row["title"];
+					echo "</a><br>";
+			
+				}
+		    	}
+		}
+		else
+		{
+		die("No blogs there.<br>");
+		}
+}
+else
+{
+	echo("<form action='mainblongi.php' method='GET'><input type='text' name='author' required placeholder='Author'><input type='submit' value='Search'></form><form action='mainblongi.php' method='GET'><input type='hidden' name='all' value='true'><input type='submit' value='All authors'></form>");
+}
+?>
+</div>
+
+<br>
+
+<br>
+<div id="footer">
+Layout by Arioch
+</div>
+
+</body>
+</html>
+
+

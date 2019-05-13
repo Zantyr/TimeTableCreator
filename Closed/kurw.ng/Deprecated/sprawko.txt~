@@ -1,0 +1,100 @@
+Paweł Tomasik
+Paweł Przybysz
+Sprawozdanie z przedmiotu Fizyka Jądrowa
+Ćwiczenie nr 4
+Wyznaczanie stałej rozpadu promieniotwórczego
+
+Spis treści:
+    Streszczenie
+    Wstęp teoretyczny
+    Metoda badawcza
+    Wyniki
+    Omówienie wyników
+    Wnioski
+    Bibliografia
+
+Streszczenie:
+    
+
+Wstęp teoretyczny:
+
+    Rozpad promieniotwórczy
+	Rozpad promieniotwórczy to proces przemiany jądra atomowego w jądro innego pierwiastka przy emisji kwantów elektromagnetycznych i/lub cząstek. Wyróżnia się cztery podstawowe przemiany: rozpad alfa, beta minus, beta plus oraz gamma. Rozpad alfa polega na emisji cząstki odpowiadającej jądru atomu helu A=4 Z=2. Rozpad beta minus i beta plus są parą przemian, podczas której emitowany jest odpowiednio elektron i pozyton. Emisji tej towarzyszy emisja antyneutrina bądź neutrina. Rozpad gamma nie zmienia składu jądra, wynika jedynie z przejścia ze stanu o wyższej energii (wzbudzonego) do stanu o energii niższej. Powstaje przy tym foton.
+
+    Prędkość rozpadu promieniotwórczego
+	Prędkość rozpadu promieniotwórczego zależy ściśle od rodzaju jądra. W przypadku próbki promieniotwórczej ilość jąder danego pierwiastka promieniotwórczego w czasie wyraża się wzorem (1). Stała lambda jest stałą szybkości rozpadu, jej wielkość zależy od jądra i waha się w zakresie od 10^-17 do 10^6. Przy pomocy wzoru (1) da się wyznaczyć wielkość zwaną czasem połowicznego zaniku, która to zależność od lambdy jest opisana wzorem (2).
+
+    Aktywność substancji promieniotwórczej
+	Aktywność substancji to ilość rozpadów w próbce w jednostce czasu. Opisana jest wzorem (3). Jednostką aktywności jest bekerel - 1Bq. Jest ona definiowana jako rozpad na sekundę.
+
+    Aktywność właściwa
+	Aktywność właściwa jest to stosunek aktywności pierwiastka do jednostki masy. Wyliczana jest ze wzoru (4).
+
+    Licznik scyntylacyjny
+	Licznik scyntylacyjny jest urządzeniem do pomiaru aktywności próbki. Jego działanie polega na kaskadowej emisji fotonów o odpowiedniej energii. Foton padający na dynodę powoduje jej wzbudzenie i wymuszoną emisję dwóch lub więcej kwantów. Następnie te kwanty polegają reakcji łańcuchowej, przez co powstająca wiązka fotonów wywołuje impuls elektryczny na anodzie. Impulsy są zliczane.
+
+    Aktywacja Indu 115
+	Ind 115 jest pierwiastkiem nieaktywnym promieniotwórczo. Bombardowanie go neutronami powoduje powstanie izotopu Indu 117, który jest radioaktywny. Ten izotop podlega rozpadowi beta minus, tworząc w efekcie jądra Cyny 117. 
+
+Metoda badawcza:
+
+	Najpierw przy pomocy licznika scyntylacyjnego mierzono promieniowanie tła. Pomiar powtórzono dziesięciokrotnie dla okresu T=1min. Następnie przygotowaną przez
+    prowadzącego próbkę umieszczono się w liczniku i dziesięciokrotnie mierzono ilość zliczeń dla okresu T=1min, zachowując półminutowe odstępy między pomiarami. Aktywność
+    tła oblicza się ze wzoru (5). Wyniki dotyczące pomiaru tła umieszczono w tabeli (A). Następnie obliczono aktywność próbki indu ze wzoru (6) dla każdego okresu
+    pomiarowego. Po uwzględnieniu aktywności tła, zestawiono wyniki w tabeli (B). Aktywność próbki podano w skali logarytmicznej w tabeli (C) według której wykonano wykres (I).
+    Następnie metodą najmniejszych kwadratów (wzory 7-13) wyznaczono współczynnik lambda oraz czas połowicznego rozkładu (wzór 14).
+
+Wyniki:
+
+    Tabela A - Wyniki pomiaru tła
+	Numer pomiaru	Zliczenia	Aktywność [Bq]
+	1		285		4,75
+	2		288		4,8
+	3		310		5,17
+	4		286		4,77
+	5		294		4,9
+	6		283		4,72
+	7		296		4,93
+	8		290		4,83
+	9		298		4,97
+	10		273		4,55
+	Suma		2903		4,838
+
+    Tabela B - Wyniki pomiaru próbki
+	Numer pomiaru	Czas początkowy[s]	Czas pomiaru[s]	Liczba zliczeń	L.z.skorygowana	Aktywność [Bq]
+	1		0			60		28125		27835		463,9
+	2		90			60		27455		27165		452,75
+	3		180			60		27081		26791		446,52
+	4		270			60		26447		25867		431,12
+	5		360			60		26017		25727		428,78
+	6		450			60		25433		25143		419,05
+	7		540			60		25021		24731		412,18
+	8		630			60		24299		24009		400,15
+	9		720			60		24146		23856		397,6
+	10		810			60		23702		23412		395,03
+
+    Tabela C - skala logarytmiczna
+	Numer pomiaru	Czas początkowy [s]	Logarytm aktwyności
+	1		0			6,13967
+	2		90			6,11534
+	3		180			6,10148
+	4		270			6,06639
+	5		360			6,06094
+	6		450			6,03799
+	7		540			6,02146
+	8		630			5,99184
+	9		720			5,98545
+	10		810			5,97896
+
+    Wynik regresji liniowej:
+	a = -0,0002061656 [1/s]
+	lambda = -a = 0,0002061656 [1/s]
+	błąd standardowy regresji liniowej: sigma = 0,0079038
+	sigma a = 0,0000802254 [1/s]
+	błąd lambda = 3 * sigma a = 0,00024067636
+
+    Czas połowicznego zaniku:
+	tau = ln2/lambda
+	tau = 3362,1s
+
+

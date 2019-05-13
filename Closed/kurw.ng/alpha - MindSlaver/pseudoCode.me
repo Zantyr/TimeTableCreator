@@ -1,0 +1,51 @@
+import shit
+main:
+	for addr in PortAddrs:
+		try:
+			conn = open,bind addr
+		except:
+			tryAgain or New
+	if conn empty: return noPortsAvailable
+	while(not estabilished and not quit):
+		msg = listen from conn
+		if msg!="":
+			if msg=="ACK" and passwd==internalPasswd:
+				send ACK
+				estabilished = (conn,passwd)
+		while(estabilished)
+			msg = listen from conn
+			meta, passwd, command = msg
+			if passwd==internalPasswd:
+				builtIn(command)
+	close conn
+	quit()
+
+====================================================
+sender:
+	load UsrAddrs
+	for addr in PortAddrs:
+		try:
+			conn = open,bind addr
+		except:
+			tryAgain or New
+	if conn empty: return noConnsAvailable
+	while(command!=quit):
+		command = raw_input
+		send(command)
+		returned = listen
+		print returned
+	close conn
+====================================================
+scriptLanguage:
+	# username <= adds to a specific users tasklist
+	# FREE <= assigns a task randomly
+	object := expression <= evaluates locally
+	object !:= expression <= evaluates on external machine
+	function(object) <= calls an API with an object
+	!: function(object) <= calls and API externally
+=====================================================
+Model:
+	EVERY TASK ADDS TO A TASK LIST INTERNALLY
+	MODULE WILL PROMPT EXTERNAL USER FOR THE FIRST TASK
+	LIST WORKS AS A QUEUE FOR TASKS
+	EVERY TASK NEEDS A RETURN VALUE EVEN IF ITS ACK

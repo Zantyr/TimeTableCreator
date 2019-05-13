@@ -1,0 +1,18 @@
+DEFINE temp0-255
+name = temp0-255
+unit = C
+scale = (0,255)
+scale_type = linear
+storage_type = 16int
+DEFINE temp0-1023
+name = temp0-1023
+unit = C
+scale = (0,1023)
+scale_type = linear
+storage_type = 16int
+DEFINE temp+-3k
+name = temp+-3k
+unit = C
+scale = (-30000,30000)
+scale_type = linear
+storage_type = 16int

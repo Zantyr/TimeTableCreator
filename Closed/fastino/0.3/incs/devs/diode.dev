@@ -1,0 +1,24 @@
+<namespace>
+    <device type='output'>
+        <name>diode_output</name>
+        <inputs>['temp0-1023']</inputs>
+        <outputs>[]</outputs>
+        <resources>["digital"]</resources>
+        <headers></headers>
+        <setup>pinMode(%res_0%,OUTPUT);</setup>
+        <fndefs></fndefs>
+        <loop>%conv_0%\ndigitalWrite(%res_0%,%in_0%);</loop>
+        <libs>[]</libs>
+    </device>
+    <device type='sensor'>
+        <name>thermal_iterator</name>
+        <inputs>[]</inputs>
+        <outputs>['temp0-255']</outputs>
+        <resources>[]</resources>
+        <headers>%out_0_declare%</headers>
+        <setup></setup>
+        <fndefs></fndefs>
+        <loop>%out_0% = random();</loop>
+        <libs>[]</libs>
+    </device>
+</namespace>

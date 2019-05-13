@@ -1,0 +1,13 @@
+<namespace>
+    <device type='output'>
+        <name>diode_output</name>
+        <inputs>1</inputs>
+        <outputs>0</outputs>
+        <resources>["digital"]</resources>
+        <headers></headers>
+        <setup>pinMode(%res_0%,OUTPUT);</setup>
+        <fndefs></fndefs>
+        <loop>digitalWrite(%res_0%,%in_0%);</loop>
+        <libs>[]</libs>
+    </device>
+</namespace>
