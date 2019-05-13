@@ -1,0 +1,40 @@
+Zadania programu:
+	"pożycza" moc obliczeniową komputera, pozwala korzystać z jego zasobów
+	pozwala instalować moduły
+
+Communication:
+	socket.lib
+	listens for specifically formed packets on specific set of ports
+	you need to estabilish connection first
+	then listen for the packets and perform language tasks
+
+Interpreter:
+	scriptlang for libraries
+	storing scripts in files
+	access to most commonly used functions(one-way, ciphers, hashes, sending packets)
+	purely functional/modular
+	OS usage
+	doesHave module checks for what can be done on this particular installation
+
+Breakdown of code:
+	main()	
+	doesHave()
+	connection.estabilish()
+	connection.send()
+	connection.receive()
+	connection.listenerThread()
+	script.builtIn()
+
+Additional modules:
+	connCrypt.RSA()
+	connCrypt.blockCipher()
+	script.IO()	
+	script.flowControl()
+	script.ShuntingYard()
+	script.API()
+	script.OS()
+	service.keyLogger()
+	service.getSendFile()
+	tool.hash()
+	tool.crypt()
+	tool.TCP()
